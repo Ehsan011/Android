@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cardLabTest" type="id" />
+    <item name="cardBuyMedicine" type="id" />
+    <item name="cardFindDoctor" type="id" />
+    <item name="cardHealthDoctor" type="id" />
+    <item name="cardOrderDetails" type="id" />
+    <item name="cardExit" type="id" />
+</resources>
