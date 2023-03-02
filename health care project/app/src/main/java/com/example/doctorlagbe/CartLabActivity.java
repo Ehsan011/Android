@@ -71,7 +71,8 @@ public class CartLabActivity extends AppCompatActivity {
             //  packages[i][4] = dbData+"Cost :"+strData[1]+"/-";
           totalAmount = totalAmount+Float.parseFloat(strData[1]);
         }
-//        Toast.makeText(getApplicationContext(), "Data is"+dbData, Toast.LENGTH_SHORT).show();
+
+//  Toast.makeText(getApplicationContext(), "Data is"+dbData, Toast.LENGTH_SHORT).show();
 
         textViewTotal.setText("Total Cost : "+totalAmount);
 
@@ -97,6 +98,18 @@ public class CartLabActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CartLabActivity.this, LabTestActivity.class));
+            }
+        });
+
+//        Checkout
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it= new Intent(CartLabActivity.this, LabTestBookingActivity.class);
+                it.putExtra("amount", textViewTotal.getText());
+                it.putExtra("date", dateButton.getText());
+                it.putExtra("time", timeButton.getText());
+                startActivity(it);
             }
         });
 

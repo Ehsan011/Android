@@ -23,6 +23,11 @@ public class Database extends SQLiteOpenHelper {
 
         String qry2="create table cart(username text, product text, price float, or_type text)";
         sqLiteDatabase.execSQL(qry2);
+
+        String qry3="create table orderplace(username text, fullname text, address text, contactno text, pincode int, date text, time text,  amount float, or_type text)";
+        sqLiteDatabase.execSQL(qry3);
+
+
     }
 
     @Override
@@ -34,6 +39,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("username", username);
         cv.put("email", email);
         cv.put("password", password);
+
         SQLiteDatabase db=getWritableDatabase();
         db.insert("users", null, cv);
         db.close();
@@ -61,6 +67,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("product", product);
         cv.put("price", price);
         cv.put("or_type", or_type);
+
         SQLiteDatabase db=getWritableDatabase();
         db.insert("cart", null, cv);
         db.close();
@@ -110,5 +117,25 @@ public class Database extends SQLiteOpenHelper {
             }
         db.close();
         return arr;
+
+    }
+
+    public void addOrder(String username, String fullname, String address, String contact, int pincode, String date, String time, float amount, String or_type){
+        ContentValues cv =new ContentValues();
+        cv.put("username", username);
+        cv.put("fullname", fullname);
+        cv.put("address", address);
+
+        cv.put("contact", contact);
+        cv.put("pincode", pincode);
+        cv.put("amount", amount);
+
+        cv.put("date", date);
+        cv.put("time", time);
+        cv.put("or_type", or_type);
+
+        SQLiteDatabase db=getWritableDatabase();
+        db.insert("orderplace", null, cv);
+        db.close();
     }
 }
