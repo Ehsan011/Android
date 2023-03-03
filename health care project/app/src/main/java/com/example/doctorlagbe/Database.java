@@ -95,7 +95,8 @@ public class Database extends SQLiteOpenHelper {
         str[0] = username;
         str[1] = or_type;
         SQLiteDatabase db= getWritableDatabase();
-        db.delete("cart", "username=? and or_type", str);
+
+        db.delete("cart", "username=? and or_type=?", str);
         db.close();
     }
 
@@ -126,7 +127,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("fullname", fullname);
         cv.put("address", address);
 
-        cv.put("contact", contact);
+        cv.put("contactno", contact);
         cv.put("pincode", pincode);
         cv.put("amount", amount);
 
@@ -137,5 +138,23 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db=getWritableDatabase();
         db.insert("orderplace", null, cv);
         db.close();
+    }
+
+    public ArrayList getOrderData(String username){
+        ArrayList<String> arr = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String str[] = new String[1];
+        str[0]=username;
+        Cursor q = db.rawQuery("select * from orderplace where username =?", str);
+        if(q.moveToFirst()){
+            do{
+
+                arr.add(q.getString(1)+"$"+q.getString(2)+"$"+q.getString(3)+"$"+q.getString(4)+"$"+q.getString(5)+"$"+q.getString(6)+"$"+q.getString(7)+"$"+q.getString(8));
+
+            }while (q.moveToNext());
+        }
+        db.close();
+        return arr;
+
     }
 }

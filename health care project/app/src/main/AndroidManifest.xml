@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Doctorlagbe"
         tools:targetApi="31">
         <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LabTestBookingActivity"
             android:exported="false" />
         <activity
