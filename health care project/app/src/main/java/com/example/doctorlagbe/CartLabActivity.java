@@ -81,10 +81,10 @@ public class CartLabActivity extends AppCompatActivity {
         for(int i=0; i<packages.length; i++){
             item = new HashMap<String, String>();
             item.put("line1", packages[i][0]);
-            item.put("line1", packages[i][1]);
-            item.put("line1", packages[i][2]);
-            item.put("line1", packages[i][3]);
-            item.put("line1", packages[i][4]);
+            item.put("line2", packages[i][1]);
+            item.put("line3", packages[i][2]);
+            item.put("line4", packages[i][3]);
+            item.put("line5", packages[i][4]);
             list.add(item);
         }
 
